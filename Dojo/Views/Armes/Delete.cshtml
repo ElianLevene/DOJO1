@@ -1,0 +1,25 @@
+﻿@model BO.Arme
+<h2>Supprimer une arme</h2>
+
+<h3>Voulez-vous supprimer cet élément ?</h3>
+@if (ViewBag.Samourais != null)
+{
+    <h3>Cette arme est affectée à un ou plusiuers samouraïs:</h3>
+    foreach (var samourai in ViewBag.Samourais)
+    {
+        <p>@samourai</p>
+    }
+}
+<div>
+    @Html.Partial("_Arme", Model)
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Retour à la liste", "Index", new { @class = "btn btn-default" })
+        </div>
+    }
+</div>
